@@ -19,11 +19,7 @@ function twoProduct(a, b) {
     if(!b.length) return a;
     for (i = 0; i < Al; i++) {
         for(j = 0; j < Bl; j++) {
-            if (Array.isArray(a[i])) {
-                result.push(a[i].concat(b[j]));
-            } else {
-                result.push([a[i], b[j]]);
-            }
+            result.push([].concat(a[i]).concat(b[j]));
         }
     }
     return result;

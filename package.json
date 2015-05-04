@@ -1,0 +1,23 @@
+{
+  "name": "outer-product",
+  "version": "1.0.0",
+  "description": "A function to calculate the outer product of an array of vectors",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talshani/outer-product.git"
+  },
+  "author": "Tal Shani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talshani/outer-product/issues"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4"
+  },
+  "homepage": "https://github.com/talshani/outer-product"
+}

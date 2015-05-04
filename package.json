@@ -4,6 +4,7 @@
   "description": "A function to calculate the outer product of an array of vectors",
   "main": "index.js",
   "scripts": {
+    "benchmark": "node benchmark.js",
     "test": "mocha --reporter spec test"
   },
   "repository": {

@@ -2,6 +2,7 @@ var Benchtable = require('benchtable');
 var outerProduct = require('./index');
 var outerProduct1 = require('./variants/code_1');
 var outerProduct2 = require('./variants/code_2');
+var outerProduct3 = require('./variants/code_3');
 var Table = require('cli-table');
 
 var suite = new Benchtable();
@@ -15,6 +16,9 @@ suite
     })
     .addFunction('code 2', function(ar) {
         outerProduct2.call(null, ar);
+    })
+    .addFunction('code 3', function(ar) {
+        outerProduct3.call(null, ar);
     })
     .addInput('small', [
         [[1, 2], [3]]
@@ -31,5 +35,5 @@ suite
     .on('error', function() {
         console.error(arguments[0]);
     })
-    .run({ 'async': false });
+    .run({ 'async': true });
 

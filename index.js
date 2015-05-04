@@ -1,32 +1,40 @@
-function outerProduct(dimensions) {
+module.exports = function outerProduct(dimensions) {
     if (!Array.isArray(dimensions)) throw new Error("Array expected");
+    if (!dimensions.length) return [];
 
-    var l = dimensions.length;
-    var product = [];
+    var results = [];
+    var positions = [];
+    var lengths = [];
+    var skips = [];
     var i;
-    for (i = 0; i < l; i++) {
-        product = twoProduct(product, dimensions[i]);
-    }
-    return product;
-}
+    var dimsCount = dimensions.length;
+    var skipMul = 1;
+    var dim;
+    var result;
+    var shouldSkip;
+    var len;
 
-function twoProduct(a, b) {
-    var result = [];
-    var Al = a.length,
-        Bl = b.length,
-        i, j;
-    if(!a.length) return b;
-    if(!b.length) return a;
-    for (i = 0; i < Al; i++) {
-        for(j = 0; j < Bl; j++) {
-            if (Array.isArray(a[i])) {
-                result.push(a[i].concat(b[j]));
-            } else {
-                result.push([a[i], b[j]]);
+    // prepare our states
+    for (i = 0; i < dimsCount; i++) {
+        var dimSize = dimensions[i].length;
+        lengths[i] = dimSize;
+        positions[i] = 0;
+        skips.push(skipMul);
+        skipMul *= dimSize;
+    }
+
+    // build product
+    for (i = 0; i < skipMul; i++) {
+        result = results[i] = [];
+        for (dim = 0; dim < dimsCount; dim++) {
+            shouldSkip = i % skips[dim] == 0;
+            len = lengths[dim];
+            if (shouldSkip) {
+                positions[dim] = (positions[dim] + 1) % len;
             }
+            result.push(dimensions[dim][positions[dim]]);
         }
     }
-    return result;
-}
 
-module.exports = outerProduct;
+    return results;
+};

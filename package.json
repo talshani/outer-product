@@ -1,6 +1,6 @@
 {
   "name": "outer-product",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A function to calculate the outer product of an array of vectors",
   "main": "index.js",
   "scripts": {

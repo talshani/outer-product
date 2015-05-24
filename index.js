@@ -1,3 +1,12 @@
+/**
+ * Calculates the outer product of the dimension array.
+ * The output will be a collection of array that each is composed of all dimensions.
+ * @example
+ * // returns [['a', 1], ['b', 1], ['a', 2], ['b', 2]]
+ * require('outer-product')([['a', 'b'], [1, 2]])
+ * @param {Array.<Array>} dimensions
+ * @returns {Array.<Array>} Combinations of all dimensions
+ */
 module.exports = function outerProduct(dimensions) {
     if (!Array.isArray(dimensions)) throw new Error("Array expected");
     if (!dimensions.length) return [];
